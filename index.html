@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f1d1b" />
+    <title>云岭森林公园 | WebGL 图形学演示</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene-canvas"></canvas>
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">WEBGL FIELD STUDY 01</p>
+          <h1>云岭森林公园</h1>
+        </div>
+        <div class="topbar-meta">
+          <span class="live-dot"></span>
+          <span>实时渲染</span>
+          <span class="divider"></span>
+          <span id="clock-readout">12:00</span>
+        </div>
+      </header>
+
+      <aside class="control-panel" aria-label="场景控制面板">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">SCENE CONTROL</p>
+            <h2>观景台</h2>
+          </div>
+          <button id="panel-toggle" class="icon-button" title="收起控制面板" aria-label="收起控制面板">−</button>
+        </div>
+
+        <div class="panel-content">
+          <section class="control-section">
+            <div class="section-title"><span class="section-index">01</span><span>时间与光照</span></div>
+            <label class="control-row">
+              <span>时间</span>
+              <output id="time-value">12:00</output>
+            </label>
+            <input id="time-slider" class="range" type="range" min="0" max="24" step="0.05" value="12" />
+            <div class="range-labels"><span>日出 06:00</span><span>日落 18:00</span></div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-title"><span class="section-index">02</span><span>算法实验</span></div>
+            <label class="control-row select-row"><span>地形算法</span><select id="terrain-algorithm" class="select-control"><option value="perlin">柏林噪声</option><option value="erosion">侵蚀地形</option></select></label>
+            <label class="control-row select-row"><span>网格密度</span><select id="terrain-density" class="select-control"><option value="45">低 · 45×45</option><option value="70" selected>中 · 70×70</option><option value="100">高 · 100×100</option><option value="130">极高 · 130×130</option></select></label>
+            <label class="control-row"><span>地形起伏</span><output id="terrain-value">1.00</output></label>
+            <input id="terrain-slider" class="range" type="range" min="0.4" max="1.6" step="0.05" value="1" />
+          </section>
+
+          <section class="control-section">
+            <div class="section-title"><span class="section-index">03</span><span>调试图层</span></div>
+            <label class="switch-row"><span>显示地形网格</span><input id="wireframe-toggle" type="checkbox" /><span class="switch"></span></label>
+          </section>
+
+          <section class="control-section compact-section">
+            <div class="section-title"><span class="section-index">04</span><span>视角</span></div>
+            <div class="view-actions">
+              <button id="reset-camera" class="action-button"><span class="button-icon">↺</span>重置视角</button>
+            </div>
+            <button id="overview-camera" class="action-button overview-button"><span class="button-icon">⌃</span>高空观察</button>
+          </section>
+        </div>
+      </aside>
+      <div class="toast" id="toast" role="status"></div>
+      <div class="loading-screen" id="loading-screen"><div class="loading-inner"><div class="loading-ring"></div><p>正在生成云岭地形</p><span>程序化场景初始化中</span></div></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
